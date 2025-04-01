@@ -105,7 +105,7 @@ def update():
     conn= sqlite3.connect("MyDB.db")
     cur = conn.cursor()
     record_id = txt_codigo.get()
-    cur.execute("""UPDATE pessoas SET"
+    cur.execute("""UPDATE pessoas SET
                 nome = :nome,
                 idade = :idade,
                 sexo = :sexo,
@@ -130,6 +130,18 @@ def update():
                 'codigo': record_id})
     conn.commit()
     conn.close()
+    # Opcional: Limpar os campos após a atualização
+    txt_nome.delete(0, END)
+    txt_idade.delete(0, END)
+    txt_altura.delete(0, END)
+    txt_peso.delete(0, END)
+    txt_datanasc.delete(0, END)
+    txt_datacad.delete(0, END)
+    txt_dataatu.delete(0, END)
+    txt_desc.delete(0, END)
+
+    # Exibe a mensagem de sucesso
+    messagebox.showinfo("Sucesso", "Dados atualizados com sucesso!")
 def escolher_img():
     caminho_img = filedialog.askopenfilename(initialdir=pasta_inicial, title="Escolha uma imagem", filetypes=(("Arquivos de imagem", "*.jpg;*.jpeg;*.png"),("Todos os arquivos", "*.*")))
     img_pil = Image.open(caminho_img)
