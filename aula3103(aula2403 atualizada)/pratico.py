@@ -6,7 +6,7 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 tela = Tk()
 
-tela.title("Radio Buttons")
+tela.title("Cadastro de Pessoas")
 
 # cor da tela
 tela.configure(background='grey')
